@@ -9,6 +9,12 @@ def compute_hull(points: list[tuple[float, float]]) -> list[tuple[float, float]]
     convex_linked_list = find_convex_hull(points)
     return convert_linked_list_to_tuples(convex_linked_list)
 
+def convert_linked_list_to_tuples(linked_list) -> list[tuple[float, float]]:
+    tuple_list = list[tuple[float, float]]()
+    for point in linked_list:
+        tuple_list.append((point.x, point.y))
+    return tuple_list
+
 def find_convex_hull(points: list[tuple[float, float]]):
     n = len(points)
     if n == 1:
@@ -113,15 +119,6 @@ def merge_convex_hulls(left_convex_hull, right_convex_hull, upper_left, upper_ri
         next_point = next_point.c_neighbor
 
     return new_convex_hull
-
-
-def convert_linked_list_to_tuples(linked_list) -> list[tuple[float, float]]:
-    tuple_list = list[tuple[float, float]]()
-    for point in linked_list:
-        tuple_list.append((point.x, point.y))
-    return tuple_list
-
-
 
 
 class ConvexPoint:
